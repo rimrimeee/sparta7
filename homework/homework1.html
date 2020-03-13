@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <!-- 구글폰트 -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Stylish&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        font-family: "Stylish", sans-serif;
+      }
+
+      .title {
+        font-size: 50px;
+      }
+      .item-title {
+        display: inline-block;
+      }
+
+      .container {
+        margin: 0 auto;
+        width: 800px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .wrap {
+        width: 500px;
+        height: 500px;
+        background-image: url("https://cdn.ggumim.co.kr/cache/furniture/600/20180425191205oK2Tie6Px2.jpg");
+        background-size: cover;
+        background-position: center;
+      }
+      .contents {
+        width: 500px;
+      }
+      .order {
+        width: 400px;
+      }
+    </style>
+    <title>반려식물 사세요</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="wrap"></div>
+
+      <!-- 제목-->
+      <div class=" text-center">
+        <span class="item-title"><label class="title"> 반려식물</label> </span>
+        가격 : 5,000원/개
+        <p class="contents">
+          삭막한 아파트 실내에 활기를 불어넣기 위해, 혹은 반려동물 기르듯 생명이
+          있는 무언가를 기르고 싶은 마음으로 요즘 식물을 가까이 두고 기르는
+          분들을 위한 상품
+        </p>
+      </div>
+      <!--주문하기-->
+      <div class="order">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">주문자 성함</span>
+          </div>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="성함을 입력해주세요"
+            aria-describedby="basic-addon1"
+          />
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01"
+              >수량</label
+            >
+          </div>
+          <select class="custom-select" id="inputGroupSelect01">
+            <option selected>선택해주세요</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">주소</span>
+          </div>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="주소를 입력해주세요"
+            aria-describedby="basic-addon1"
+          />
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">전화번호</span>
+          </div>
+          <input
+            type="number"
+            class="form-control"
+            placeholder="전화번호를 입력해주세요"
+            aria-describedby="basic-addon1"
+          />
+        </div>
+      </div>
+      <button type="button" class="btn btn-outline-primary">주문하기</button>
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script
+        src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"
+      ></script>
+    </div>
+  </body>
+</html>
