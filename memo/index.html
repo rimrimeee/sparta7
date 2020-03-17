@@ -48,7 +48,7 @@
           중요한 링크를 저장해두고, 나중에 볼 수 있는 공간입니다
         </p>
         <hr class="my-4" />
-        <a id="open_inputbox" class="btn btn-primary btn-lg" href="#" role="button" onclick="onOpenBox()"
+        <a id="open_input_box" class="btn btn-primary btn-lg" href="#" role="button" onclick="onOpenBox()"
           >포스팅박스 열기</a
         >
       </div>
@@ -229,11 +229,21 @@
 
     <script>
       $("#input_form").hide();
+      let opened = false;
+
   
 
-    functin onOpenBox() {
-      $("open_inputbox").html("포스팅박스 닫기");
+    function onOpenBox() {
+      if(opened == false){
+      $("#open_input_box").html("포스팅박스 닫기");
+      $("#input_form").show();
+      opened = true;
+    }else{
+      $("#open_input_box").html("포스팅박스 열기");
+    $("#input_form").hide();
+    opened=false;
     }
+
     </script>
   </body>
 </html>
