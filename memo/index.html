@@ -48,12 +48,12 @@
           중요한 링크를 저장해두고, 나중에 볼 수 있는 공간입니다
         </p>
         <hr class="my-4" />
-        <a class="btn btn-primary btn-lg" href="#" role="button"
+        <a id="open_inputbox" class="btn btn-primary btn-lg" href="#" role="button" onclick="onOpenBox()"
           >포스팅박스 열기</a
         >
       </div>
 
-      <div class="form_bundle">
+      <div id="input_form" class="form_bundle">
         <div class="form-group">
           <label for="formGroupExampleInput1">아티클 URL</label>
           <input type="text" class="form-control" id="formGroupExampleInput" >
@@ -226,5 +226,14 @@
       integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
       crossorigin="anonymous"
     ></script>
+
+    <script>
+      $("#input_form").hide();
+  
+
+    functin onOpenBox() {
+      $("open_inputbox").html("포스팅박스 닫기");
+    }
+    </script>
   </body>
 </html>

@@ -75,9 +75,10 @@
       <div class="order">
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">주문자 성함</span>
+            <span class="input-group-text" id="basic-add">주문자 성함</span>
           </div>
           <input
+            id="input_name"
             type="text"
             class="form-control"
             placeholder="성함을 입력해주세요"
@@ -91,7 +92,7 @@
             >
           </div>
           <select class="custom-select" id="inputGroupSelect01">
-            <option selected>선택해주세요</option>
+            <option value="0" selected>선택해주세요</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -99,20 +100,22 @@
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">주소</span>
+            <span class="input-group-text">e-mail</span>
           </div>
           <input
-            type="text"
+            id="email"
+            type="e-mail"
             class="form-control"
-            placeholder="주소를 입력해주세요"
+            placeholder="e-mail을 입력해주세요"
             aria-describedby="basic-addon1"
           />
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">전화번호</span>
+            <span class="input-group-text">전화번호</span>
           </div>
           <input
+            id="phone"
             type="number"
             class="form-control"
             placeholder="전화번호를 입력해주세요"
@@ -120,7 +123,9 @@
           />
         </div>
       </div>
-      <button type="button" class="btn btn-outline-primary">주문하기</button>
+      <button type="button" class="btn btn-outline-primary" onclick="onOrder()">
+        주문하기
+      </button>
       <!-- Optional JavaScript -->
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->
       <script
@@ -138,6 +143,30 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"
       ></script>
+
+      <script>
+        function onOrder() {
+          let name = $("#input_name").val();
+          if (name == "") {
+            alert("이름을 입력해주세요");
+            return;
+          }
+          let count = $("#inputGroupSelect01").val();
+          if (count < 1) {
+            alert("수량을 선택하세요");
+            return;
+          }
+          let email = $("#email").val();
+          if (email == "" || !re.test($email)) {
+            alert("이메일을 입력해주세요");
+            return;
+          }
+          let phone = $("#phone").val();
+          if (phone == "") {
+            alert("전화번호를 입력해주세요");
+          }
+        }
+      </script>
     </div>
   </body>
 </html>
