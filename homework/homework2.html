@@ -167,6 +167,7 @@
           }
           if (!chkEmail(email)) {
             alert("이메일 형식이 틀립니다");
+            $("#email").focus();
             return;
           }
           /// 이메일 형식이 달라요!
@@ -178,6 +179,7 @@
           }
           if (is_phone_number(phone) == false) {
             alert("전화번호 입력형식이 틀립니다");
+            $("#phone").focus();
             return;
           }
 
