@@ -17,7 +17,7 @@ soup = BeautifulSoup(data.text, 'html.parser')
 
 # print(rank)
 
-chart = soup.select("tr.list")
+chart = soup.select("td.info")
 rank = 0
 for music in chart:
     rank += 1
