@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>MOVIE</title>
+    <!-- JQuery를 import 합니다 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <style type="text/css">
+      div.question-box {
+        margin: 10px 0 20px 0;
+      }
+      table {
+        border: 1px solid;
+        border-collapse: collapse;
+      }
+
+      td,
+      th {
+        padding: 10px;
+        border: 1px solid;
+      }
+    </style>
+
+    <script>
+      function q1() {
+        $("#names-q1").html("");
+        $.ajax({
+          type: "GET",
+          url: `/movies`,
+          data: {},
+          success: function(response) {
+            let size = response.length;
+
+            for (let i = 0; i < size; i++) {
+              let rank = response[i].rank;
+              let title = response[i].title;
+              let score = response[i].score;
+              let html = `
+                  <tr>
+
+                    <td>${rank}</td>
+                    <td>${title} </td>
+                    <td>${score} 점</td>
+                  </tr>`;
+              $("#names-q1").append(html);
+            }
+          }
+        });
+      }
+      function q2() {
+        let rank = $("#input_rank").val();
+        let title = $("#input_title").val();
+        let score = $("#input_score").val();
+        if (rank == "") {
+          alert("순위을 입력해주세요");
+          $("#input_rank").focus();
+          return;
+        } else if (title == "") {
+          alert("제목을 입력해주세요");
+          $("#input_title").focus();
+          return;
+        } else if (score == "") {
+          alert("점수를 입력해주세요");
+          $("#input_score").focus();
+          return;
+        }
+        $.ajax({
+          type: "POST",
+          url: "/movies",
+          data: {
+            rank: rank,
+            title: title,
+            score: score
+          },
+          success: function(response) {
+            if (response["result"] == "success") {
+              alert(response["message"]);
+              $("#input_rank").val("");
+              $("#input_title").val("");
+              $("#input_score").val("");
+              window.location.reload();
+            }
+            q1();
+          }
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <h1>영화 순위를 매겨보자!</h1>
+
+    <hr />
+
+    <div class="question-box">
+      <h2>나만의 영화순위 매기기</h2>
+      <p>추가하기를 누르면 검색하기에서 리스트가 나와야 합니다.</p>
+      <h2>추가하기</h2>
+      <div>랭크 : <input id="input_rank" type="number" /></div>
+      <div>제목 : <input id="input_title" type="string" /></div>
+      <div>점수 : <input id="input_score" type="number" /></div>
+
+      <button onclick="q2()">추가하기</button>
+      <br />
+      <h2>조회하기</h2>
+      <div>랭크 : <input id="read_rank" type="number" /></div>
+      <div>제목 : <input id="read_title" type="string" /></div>
+      <div>점수 : <input id="read_score" type="number" /></div>
+      <br />
+
+      <button onclick="q1()">업데이트</button>
+
+      <table>
+        <thead>
+          <tr>
+            <td>랭킹</td>
+            <td>영화명</td>
+            <td>점수</td>
+          </tr>
+        </thead>
+        <tbody id="names-q1"></tbody>
+      </table>
+    </div>
+  </body>
+</html>
