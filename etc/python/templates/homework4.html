@@ -62,7 +62,7 @@
       <div class="wrap"></div>
 
       <!-- 제목-->
-      <div class=" text-center">
+      <div class="text-center">
         <span class="item-title"><label class="title"> 반려식물</label> </span>
         가격 : 5,000원/개
         <p class="contents">
@@ -120,7 +120,7 @@
           />
         </div>
       </div>
-      <button type="button" class="btn btn-outline-primary" onclick="onOrder()">
+      <button class="btn btn-outline-primary" onclick="onOrder()">
         주문하기
       </button>
       <br />
@@ -164,81 +164,83 @@
       ></script>
 
       <script>
-                        function onOrder() {
-                          let name = $("#input_name").val();
-                          let count = $("#select_count").val();
-                          let email = $("#email").val();
-                          let phone = $("#phone").val();
+        $(document).ready(function(){
+                        $('#order_list').html('');
+                        listing();
+            });
+        function onOrder() {
+            let name = $("#input_name").val();
+            let count = $("#select_count").val();
+            let email = $("#email").val();
+            let phone = $("#phone").val();
 
-                          if (name == "") {
-                            alert("이름을 입력해주세요");
-                            $("#input_name").focus();
-                            return;
-                          }
+            if (name == "") {
+            alert("이름을 입력해주세요");
+            $("#input_name").focus();
+            return;
+            }
 
-                          if (count < 1) {
-                            alert("수량을 선택하세요");
-                            $("#select_count").focus();
-                            return;
-                          }
+            if (count < 1) {
+            alert("수량을 선택하세요");
+            $("#select_count").focus();
+            return;
+            }
 
-                          if (email == "") {
-                            alert("이메일을 입력해주세요");
-                            $("#email").focus();
-                            return;
-                          }
-                          if (!chkEmail(email)) {
-                            alert("이메일 형식이 틀립니다");
-                            $("#email").focus();
-                            return;
-                          }
-                          /// 이메일 형식이 달라요!
+            if (email == "") {
+            alert("이메일을 입력해주세요");
+            $("#email").focus();
+            return;
+            }
+            if (!chkEmail(email)) {
+            alert("이메일 형식이 틀립니다");
+            $("#email").focus();
+            return;
+            }
+            /// 이메일 형식이 달라요!
 
-                          if (phone == "") {
-                            alert("전화번호를 입력해주세요");
-                            $("#phone").focus();
-                            return;
-                          }
-                          if (is_phone_number(phone) == false) {
-                            alert("전화번호 입력형식이 틀립니다");
-                            $("#phone").focus();
-                            return;
-                          }
+            if (phone == "") {
+            alert("전화번호를 입력해주세요");
+            $("#phone").focus();
+            return;
+            }
+            if (is_phone_number(phone) == false) {
+            alert("전화번호 입력형식이 틀립니다");
+            $("#phone").focus();
+            return;
+            }
 
-                          alert("주문이 완료되었습니다");
-                        }
+            alert("주문이 완료되었습니다");
 
-                            $.ajax({
-                                type: "POST",
-                                url: "/order",
-                                data: { name:name,count:count,email:email,phone:phone },
-                                success: function (response) {
-                                    if (response['result']== 'success'{
-                                        alert(response['message']);
-                                        $("#input_name").val();
-                                        $("#select_count").val();
-                                        $("#email").val();
-                                        $("#phone").val();
-                                        window.location.reload();
-                                    })}}
 
-                                       $(document).ready(function()){
-                                        $('#order-list').html('');
-                                        listing();
-                                        });
+            $.ajax({
+                type: "POST",
+                url: "/order",
+                data: { name:name,count:count,email:email,phone:phone },
+                success: funcion (response) {
+                    if (response.success){
+                        alert(response['message']);
+                        $("#input_name").val();
+                        $("#select_count").val();
+                        $("#email").val();
+                        $("#phone").val();
+                        window.location.reload();}}
+
+
+
+                    })}
         function listing(){
             $.ajax({
                 type:"GET",
                 url: "/order",
                 data:{},
                 success:fuction(response){
-                    if (response['result']=='success'){
+                    if (response.success){
                         let order =resonse['order'];
                         for (let i = 0; i < size; i++) {
                         make_list(order[i]['name'],order[i]['count'],order[i]['email'],order[i]['phone']);
 
                     }
-                }else{
+                } else {
                     alert('주문을 받아오지 못했습니다');
                 }
             }
@@ -277,7 +279,7 @@
       </script>
       <script>
         // 주문 리스트
-        $(document).ready(function() {
+        $(document).ready(function () {
           for (let i = 1; i < 12; i++) {
             let temp_html = '<option value="' + i + '">' + i + "</option>";
             $("#select_count").append(temp_html);
